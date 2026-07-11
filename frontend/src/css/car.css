@@ -1,0 +1,271 @@
+.gi-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #f5f7fa;
+  padding: 30px 20px;
+  box-sizing: border-box;
+}
+
+.gi-container {
+  width: 100%;
+  max-width: 1300px;
+  margin: auto;
+  display: flex;
+  gap: 25px;
+  align-items: flex-start;
+}
+
+/* Left Side */
+.gi-left {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.gi-box {
+  background: #fff;
+  padding: 22px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.gi-box h2 {
+  font-size: 22px;
+  margin-bottom: 18px;
+  color: #222;
+  font-weight: 700;
+}
+
+/* Inputs & Button */
+.gi-box select {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 15px;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  background: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.gi-box select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.2);
+}
+
+.gi-box button {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  background: #ff5722;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.gi-box button:hover {
+  background: #e64a19;
+}
+
+/* Recently Listed Cars */
+.gi-recent-car {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 15px;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.gi-recent-car:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.gi-recent-car img {
+  width: 85px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.gi-recent-car h4 {
+  font-size: 15px;
+  margin: 0 0 5px;
+  color: #222;
+  font-weight: 600;
+}
+
+.gi-recent-car p {
+  margin: 0;
+  color: #ff5722;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Right Side */
+.gi-right {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* Car Card */
+.gi-car-card {
+  display: flex;
+  gap: 20px;
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+}
+
+.gi-car-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+}
+
+.gi-car-card img {
+  width: 320px;
+  height: 220px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.gi-details {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.gi-details h2 {
+  margin: 0 0 10px;
+  font-size: 26px;
+  color: #222;
+  font-weight: 700;
+}
+
+.gi-price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ff5722;
+  margin-bottom: 16px;
+}
+
+.gi-info {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.gi-info span {
+  background: #f1f3f6;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+
+/* View Details Button */
+.gi-details button {
+  width: fit-content;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 8px;
+  background: #007bff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.gi-details button:hover {
+  background: #0056b3;
+}
+
+.gi-details button a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+/* No Data Message */
+.gi-right p {
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+  padding: 30px 0;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .gi-container {
+    flex-direction: column;
+  }
+
+  .gi-left,
+  .gi-right {
+    width: 100%;
+  }
+
+  .gi-car-card {
+    flex-direction: column;
+  }
+
+  .gi-car-card img {
+    width: 100%;
+    height: 240px;
+  }
+
+  .gi-details h2 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 576px) {
+  .gi-page {
+    padding: 20px 12px;
+  }
+
+  .gi-box {
+    padding: 18px;
+  }
+
+  .gi-box h2 {
+    font-size: 20px;
+  }
+
+  .gi-car-card img {
+    height: 200px;
+  }
+
+  .gi-details {
+    padding: 16px;
+  }
+
+  .gi-details h2 {
+    font-size: 20px;
+  }
+
+  .gi-price {
+    font-size: 18px;
+  }
+
+  .gi-info span {
+    font-size: 13px;
+    padding: 7px 12px;
+  }
+}

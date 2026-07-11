@@ -1,0 +1,380 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* HEADER */
+.mi-top-header {
+  width: 100%;
+  background: #f5f5f5;
+  padding: 15px 30px;
+  border-bottom: 1px solid #ddd;
+}
+
+.mi-header-container {
+  max-width: 1400px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* LOGO */
+.mi-logo-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mi-logo-icon {
+  font-size: 28px;
+  color: #e53935;
+}
+
+.mi-logo-text h2 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.mi-logo-text span {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* INFO */
+.mi-info-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mi-circle-icon {
+  width: 45px;
+  height: 45px;
+  border: 2px solid #aaa;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* RIGHT */
+.mi-right-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.mi-social-icons svg {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.mi-social-icons svg:hover {
+  color: #e53935;
+}
+
+/* BUTTONS (HEADER) */
+.mi-login-btn {
+  background: #ff4b3e;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.mi-signup-btn {
+  background: #28a745;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* ===================== */
+/* POPUP */
+/* ===================== */
+
+.mi-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.mi-popup-box {
+  width: 400px;
+  max-width: 90%;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 25px;
+  color: #fff;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  animation: miPopup 0.4s ease;
+}
+
+@keyframes miPopup {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* HEADER */
+.mi-popup-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mi-close-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: white;
+  cursor: pointer;
+}
+
+/* FORM */
+.mi-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+}
+
+.mi-form input {
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+/* BUTTONS */
+.mi-popup-login-btn {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(45deg, #007bff, #00c6ff);
+  color: white;
+  cursor: pointer;
+}
+
+.mi-popup-signup-btn {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(45deg, #28a745, #5cd65c);
+  color: white;
+  cursor: pointer;
+}
+
+/* TEXT */
+.mi-text {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.mi-link {
+  color: #00c6ff;
+  cursor: pointer;
+}
+
+.mi-link:hover {
+  text-decoration: underline;
+}
+
+/* CHECKBOX */
+.mi-checkbox {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.mi-checkbox input {
+  margin-right: 8px;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .mi-popup-box {
+    padding: 20px;
+  }
+}
+/* ===================== */
+/* POPUP BASE */
+/* ===================== */
+
+.mi-popup-box {
+  width: 420px;
+  max-width: 90%;
+  border-radius: 20px;
+  padding: 25px;
+  color: #fff;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.4);
+  animation: miPopup 0.4s ease;
+  backdrop-filter: blur(18px);
+}
+
+/* ===================== */
+/* LOGIN STYLE (BLUE THEME) */
+/* ===================== */
+
+.mi-popup-box.login {
+  background: linear-gradient(135deg, rgba(0,123,255,0.6), rgba(0,198,255,0.4));
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* ===================== */
+/* SIGNUP STYLE (GREEN THEME) */
+/* ===================== */
+
+.mi-popup-box.signup {
+  background: linear-gradient(135deg, rgba(40,167,69,0.6), rgba(92,214,92,0.4));
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* ===================== */
+/* INPUT FIELDS */
+/* ===================== */
+
+.mi-form input {
+  padding: 14px;
+  margin-bottom: 14px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: rgba(255,255,255,0.9);
+  transition: 0.3s;
+}
+
+.mi-form input:focus {
+  transform: scale(1.03);
+  box-shadow: 0 0 12px rgba(255,255,255,0.6);
+}
+
+/* ===================== */
+/* BUTTONS */
+/* ===================== */
+
+/* LOGIN BUTTON */
+.mi-popup-login-btn {
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(45deg, #0056ff, #00c6ff);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.mi-popup-login-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,123,255,0.6);
+}
+
+/* SIGNUP BUTTON */
+.mi-popup-signup-btn {
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(45deg, #1e7e34, #5cd65c);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.mi-popup-signup-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(40,167,69,0.6);
+}
+
+/* ===================== */
+/* HEADER */
+/* ===================== */
+
+.mi-popup-header h2 {
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* ===================== */
+/* CLOSE BUTTON */
+/* ===================== */
+
+.mi-close-btn:hover {
+  color: red;
+  transform: rotate(90deg);
+}
+
+/* ===================== */
+/* TEXT */
+/* ===================== */
+
+.mi-text {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.mi-link {
+  font-weight: bold;
+  color: #fff;
+  border-bottom: 1px dashed #fff;
+}
+
+.mi-link:hover {
+  opacity: 0.8;
+}
+
+/* ===================== */
+/* CHECKBOX */
+/* ===================== */
+
+.mi-checkbox {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.mi-checkbox input {
+  margin-right: 8px;
+}
+
+/* ===================== */
+/* ANIMATION */
+/* ===================== */
+
+@keyframes miPopup {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

@@ -1,0 +1,193 @@
+ 
+
+.fri-vehicledata-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.fri-vehicledata-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.fri-vehicledata-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  padding: 10px;
+}
+
+.fri-vehicledata-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+.fri-vehicledata-table thead {
+  background: #111827;
+}
+
+.fri-vehicledata-table thead th {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 14px 10px;
+  text-align: left;
+  border: 1px solid #2b3548;
+  white-space: nowrap;
+}
+
+.fri-vehicledata-table tbody tr {
+  transition: 0.3s ease;
+}
+
+.fri-vehicledata-table tbody tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+.fri-vehicledata-table tbody tr:hover {
+  background: #eef4ff;
+}
+
+.fri-vehicledata-table tbody td {
+  padding: 12px 10px;
+  border: 1px solid #e5e7eb;
+  font-size: 14px;
+  color: #333;
+  vertical-align: top;
+}
+
+.fri-overview-cell {
+  max-width: 220px;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.fri-edit-btn {
+  display: inline-block;
+  padding: 8px 14px;
+  background: #2563eb;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.fri-edit-btn:hover {
+  background: #1d4ed8;
+}
+
+.fri-no-data {
+  text-align: center;
+  padding: 20px;
+  font-size: 16px;
+  color: #666;
+}
+.fri-action-btns {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.fri-icon-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  transition: 0.3s ease;
+}
+
+.fri-edit-btn {
+  background: #2563eb;
+  color: #fff;
+}
+
+.fri-edit-btn:hover {
+  background: #1d4ed8;
+  transform: scale(1.05);
+}
+
+.fri-delete-btn {
+  background: #dc2626;
+  color: #fff;
+}
+
+.fri-delete-btn:hover {
+  background: #b91c1c;
+  transform: scale(1.05);
+}
+
+.fri-no-data {
+  text-align: center;
+  padding: 20px;
+  font-size: 16px;
+  color: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .fri-vehicledata-container {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .fri-vehicledata-title {
+    font-size: 22px;
+  }
+
+  .fri-vehicledata-table thead th,
+  .fri-vehicledata-table tbody td {
+    font-size: 13px;
+    padding: 10px 8px;
+  }
+
+  .fri-icon-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .fri-vehicledata-container {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .fri-vehicledata-title {
+    font-size: 22px;
+  }
+
+  .fri-vehicledata-table thead th,
+  .fri-vehicledata-table tbody td {
+    font-size: 13px;
+    padding: 10px 8px;
+  }
+
+  .fri-edit-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+   .fri-icon-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+}

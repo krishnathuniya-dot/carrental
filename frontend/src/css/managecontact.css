@@ -1,0 +1,198 @@
+.manage-container {
+  width: 99%;
+  margin: 15px auto;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 8px;
+  overflow-x: auto;
+  font-family: Arial, sans-serif;
+}
+
+.manage-container h2 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 12px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.mq-tables {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.mq-tables th,
+.mq-tables td {
+  border: 1px solid #ddd;
+  padding: 10px 8px;
+  text-align: left;
+  font-size: 14px;
+  color: #444;
+  vertical-align: top;
+}
+
+.mq-tables th {
+  background: #f7f7f7;
+  font-weight: bold;
+  color: #333;
+}
+
+.mq-tables tbody tr:nth-child(even) {
+  background: #fcfcfc;
+}
+
+.mq-tables tbody tr:hover {
+  background: #f3f3f3;
+}
+
+.mq-tables td {
+  line-height: 1.6;
+}
+
+/* Message column width */
+.mq-tables td:nth-child(5) {
+  max-width: 360px;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+/* Posting date column */
+.mq-tables td:nth-child(6) {
+  min-width: 120px;
+}
+
+/* Action buttons */
+.mq-tables td:last-child {
+  white-space: nowrap;
+}
+
+.read-btn,
+.delete-btn {
+  border: none;
+  background: none;
+  color: #337ab7;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 10px;
+  text-decoration: underline;
+}
+
+.read-btn:hover,
+.delete-btn:hover {
+  color: #23527c;
+}
+
+.no-data {
+  text-align: center;
+  padding: 20px;
+  font-size: 15px;
+  color: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .manage-container {
+    padding: 5px;
+  }
+
+  .manage-container h2 {
+    font-size: 18px;
+  }
+
+  .mq-tables th,
+  .mq-tables td {
+    font-size: 12px;
+    padding: 8px 6px;
+  }
+
+  .read-btn,
+  .delete-btn {
+    font-size: 12px;
+  }
+}
+.manage-container {
+  padding: 20px;
+}
+
+.mq-tables {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.mq-tables th,
+.mq-tables td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+.mq-tables th {
+  background: #111;
+  color: white;
+}
+
+.status-actions {
+  display: flex;
+  flex-direction: column;
+
+   gap: 10px;
+  align-items: center;
+}
+
+.status-text {
+  font-weight: bold;
+  
+  font-size: 15px;
+}
+
+.status-confirm {
+  color: green;
+   
+}
+
+.status-cancel {
+  color: red;
+}
+
+.status-pending {
+  color: orange;
+}
+
+.status-links {
+  display: flex;
+  gap: 10px;
+}
+
+.confirm-text,
+.cancel-text {
+  cursor: pointer;
+  margin-left: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.confirm-text {
+  color: green;
+}
+
+.cancel-text {
+  color: red;
+}
+
+.delete-btn {
+  background: crimson;
+
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.delete-btn:hover {
+  background: darkred;
+}

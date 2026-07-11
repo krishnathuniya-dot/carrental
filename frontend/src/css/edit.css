@@ -1,0 +1,161 @@
+.av-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background: #f4f7fb;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.av-container {
+  max-width: 950px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.av-title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #222;
+}
+
+.av-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.av-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.av-group label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.av-group input,
+.av-group textarea,
+.av-group select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  box-sizing: border-box;
+  transition: 0.3s ease;
+  background: #fff;
+}
+
+.av-group input:focus,
+.av-group textarea:focus,
+.av-group select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.2);
+}
+
+.av-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.av-accessories {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 10px 0;
+}
+
+.av-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: #333;
+  background: #f8f9fa;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.av-checkbox input {
+  width: auto;
+  margin: 0;
+}
+
+.av-image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 18px;
+  margin-top: 10px;
+}
+
+.av-image-box {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 12px;
+  background: #fafafa;
+  text-align: center;
+}
+
+.av-image-box input[type="file"] {
+  width: 100%;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.av-preview {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.av-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  background: #007bff;
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.av-btn:hover {
+  background: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .av-container {
+    padding: 20px;
+  }
+
+  .av-title {
+    font-size: 24px;
+  }
+
+  .av-accessories {
+    grid-template-columns: 1fr;
+  }
+
+  .av-image-grid {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  }
+
+  .av-preview {
+    height: 110px;
+  }
+}
