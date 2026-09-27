@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaEdit, FaTrash } from "react-icons/fa";
-import "../css/Vehicledata.css";
+import "../css/vehicledata.css";
 
 export default function Vehicledata() {
   const [vehicles, setVehicles] = useState([]);
