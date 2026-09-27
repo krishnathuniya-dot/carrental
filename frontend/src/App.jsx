@@ -33,7 +33,7 @@ import ProtectedRoute from "./component/ProtectedRoute";
 // =========================================================
 // ADMIN PAGES
 // =========================================================
-import Registerdata from "./pages/registerdata";
+import Registerdata from "./pages/Registerdata";
 import Managecontact from "./pages/Managecontact";
 import Contactinfo from "./pages/Contactinfo";
 import Subscribedata from "./pages/Subscribedata";
@@ -42,7 +42,7 @@ import Vehicledata from "./pages/vehicledata";
 import CreateBrand from "./pages/Createbrand";
 import Managebrand from "./pages/Managebrand";
 import Managebooking from "./pages/Managebooking";
-import Testimonialdata from "./pages/testimonialdata";
+import Testimonialdata from "./pages/Testimonialdata";
 import Edit from "./pages/Edit";
 import Brandedit from "./pages/Brandedit";
 
