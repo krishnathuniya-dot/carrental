@@ -41,7 +41,9 @@ export default function Bookings() {
 
       if (data.success) {
         setBookings(
-          Array.isArray(data.data) ? data.data : []
+          Array.isArray(data.data)
+            ? data.data
+            : []
         );
       } else {
         console.log(data.message);
@@ -140,7 +142,7 @@ export default function Bookings() {
               {item.vehicleId?.image1 ? (
 
                 <img
-                  src={`https://carrental-kmhk.onrender.com/uploads/${item.vehicleId.image1}`}
+                  src={item.vehicleId.image1}
                   alt={
                     item.vehicleId.vehicleTitle ||
                     item.brand ||
@@ -148,7 +150,13 @@ export default function Bookings() {
                   }
                   className="booking-car-image"
                   onError={(e) => {
-                    e.target.style.display = "none";
+                    console.error(
+                      "Cloudinary image failed:",
+                      item.vehicleId.image1
+                    );
+
+                    e.target.style.display =
+                      "none";
                   }}
                 />
 
@@ -247,4 +255,3 @@ export default function Bookings() {
     </div>
   );
 }
-

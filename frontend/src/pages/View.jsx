@@ -8,7 +8,7 @@ export default function View() {
 
   // =========================================================
   // ACCESSORIES LIST
-  // =========================================================  
+  // =========================================================
 
   const accessoriesList = [
     "Air Conditioner",
@@ -66,7 +66,7 @@ export default function View() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // =========================================================
-  // DEFAULT TAB = ACCESSORIES
+  // DEFAULT TAB
   // =========================================================
 
   const [activeTab, setActiveTab] = useState("accessories");
@@ -111,37 +111,13 @@ export default function View() {
 
         const rawAccessories = vehicle.accessories;
 
-        console.log(
-          "RAW ACCESSORIES:",
-          rawAccessories
-        );
+        console.log("RAW ACCESSORIES:", rawAccessories);
 
         if (Array.isArray(rawAccessories)) {
-          /*
-           * CASE 1:
-           * Normal array:
-           *
-           * [
-           *   "Air Conditioner",
-           *   "Power Steering"
-           * ]
-           */
-
           if (
             rawAccessories.length > 0 &&
             typeof rawAccessories[0] === "string"
           ) {
-            /*
-             * Check whether first item itself is
-             * a JSON string.
-             *
-             * Example:
-             *
-             * [
-             *   "[\"Air Conditioner\",\"Power Steering\"]"
-             * ]
-             */
-
             try {
               const firstItem = rawAccessories[0].trim();
 
@@ -173,15 +149,6 @@ export default function View() {
         } else if (
           typeof rawAccessories === "string"
         ) {
-          /*
-           * CASE 2:
-           * Accessories directly string me hain.
-           *
-           * Example:
-           *
-           * "[\"Air Conditioner\",\"Power Steering\"]"
-           */
-
           try {
             const parsed = JSON.parse(rawAccessories);
 
@@ -231,6 +198,15 @@ export default function View() {
 
           accessories:
             parsedAccessories,
+
+          // ===================================================
+          // CLOUDINARY IMAGE URL
+          // ===================================================
+          // Cloudinary ke baad image1-image5 mein
+          // complete URL MongoDB se aayega.
+          // Example:
+          // https://res.cloudinary.com/...
+          // Isliye /uploads/ add nahi karna hai.
 
           image1:
             vehicle.image1 || "",
@@ -425,14 +401,10 @@ export default function View() {
     // =======================================================
 
     const fromDate =
-      new Date(
-        bookingData.from_date
-      );
+      new Date(bookingData.from_date);
 
     const toDate =
-      new Date(
-        bookingData.to_date
-      );
+      new Date(bookingData.to_date);
 
     if (toDate < fromDate) {
       alert(
@@ -565,9 +537,7 @@ export default function View() {
           justifyContent: "center",
         }}
       >
-        <h2>
-          Loading...
-        </h2>
+        <h2>Loading...</h2>
       </div>
     );
   }
@@ -593,16 +563,25 @@ export default function View() {
             <div
               className="slider-bg"
               style={{
-                backgroundImage: `url(https://carrental-kmhk.onrender.com/uploads/${vehicleImages[currentIndex]})`,
+                backgroundImage: `url(${vehicleImages[currentIndex]})`,
               }}
             ></div>
 
             {/* MAIN IMAGE */}
 
             <img
-              src={`https://carrental-kmhk.onrender.com/uploads/${vehicleImages[currentIndex]}`}
+              src={vehicleImages[currentIndex]}
               alt={`${vehicleData.brand} ${vehicleData.vehicleTitle}`}
               className="slider-img"
+              onError={(e) => {
+                console.error(
+                  "Cloudinary image failed:",
+                  vehicleImages[currentIndex]
+                );
+
+                e.currentTarget.style.display =
+                  "none";
+              }}
             />
 
             {/* PREVIOUS */}
@@ -659,11 +638,9 @@ export default function View() {
         ) : (
 
           <div className="no-image">
-
             <p>
               No vehicle image available
             </p>
-
           </div>
 
         )}
@@ -811,10 +788,6 @@ export default function View() {
 
                   {accessoriesList.map(
                     (item, index) => {
-
-                      // ======================================
-                      // CHECK ACCESSORY
-                      // ======================================
 
                       const isAvailable =
                         Array.isArray(
