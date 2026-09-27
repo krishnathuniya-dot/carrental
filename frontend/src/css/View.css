@@ -1,275 +1,843 @@
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
 }
 
 .full-page {
   width: 100%;
-  background: #fff;
+  min-height: 100vh;
+  background: #f5f7fa;
+  color: #1f2937;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-/* TITLE SECTION */
-.title-section {
-  background: #f3f3f3;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 45px 70px;
-  margin-bottom: 30px;
-}
 
-.car-title h1 {
-  font-size: 42px;
-  color: #111;
-}
+/* =========================================================
+   SLIDER
+========================================================= */
 
-.car-price {
-  text-align: right;
-}
-
-.car-price h2 {
-  color: red;
-  font-size: 48px;
-  margin-bottom: 5px;
-}
-
-.car-price p {
-  color: #666;
-  font-size: 18px;
-}
-
-/* MAIN */
-.main-section {
-  display: flex;
-  gap: 25px;
-  padding: 0 40px 40px;
-}
-
-.left-section {
-  width: 70%;
-}
-
-.right-section {
-  width: 30%;
-}
-
-/* INFO BOX */
-.top-boxes {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 25px;
-}
-
-.info-box {
-  width: 130px;
-  height: 100px;
-  border: 1px solid #ddd;
-  text-align: center;
-  padding-top: 18px;
-  background: #fff;
-}
-
-.info-box h3 {
-  font-size: 28px;
-  color: #444;
-  margin-bottom: 8px;
-}
-
-.info-box p {
-  color: red;
-  font-size: 14px;
-}
-
-/* TABS */
-.tabs {
-  display: flex;
-  margin-bottom: 20px;
-}
-
-.tab-btn {
-  padding: 18px 35px;
-  border: none;
-  background: #eee;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-.tab-btn.active {
-  background: red;
-  color: white;
-}
-
-/* ACCESSORIES */
-.accessories-box {
-  border: 1px solid #ddd;
-  background: #fff;
-}
-
-.accessories-box h3 {
-  background: #f3f3f3;
-  padding: 15px;
-  font-size: 22px;
-  border-bottom: 1px solid #ddd;
-}
-
-.accessories-box table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.accessories-box td {
-  border: 1px solid #ddd;
-  padding: 18px;
-  font-size: 18px;
-}
-
-.accessories-box td:last-child {
-  width: 100px;
-  text-align: center;
-  font-size: 22px;
-  font-weight: bold;
-}
-
-.yes {
-  color: green;
-}
-
-.no {
-  color: red;
-}
-
-/* BOOK BOX */
-.book-box {
-  border: 1px solid #ddd;
-  padding: 20px;
-  background: #fff;
-}
-
-.book-box h3 {
-  font-size: 28px;
-  margin-bottom: 20px;
-}
-
-.book-box input,
-.book-box textarea {
-  width: 100%;
-  margin-bottom: 15px;
-  padding: 14px;
-  border: none;
-  background: #f3f3f3;
-  font-size: 16px;
-  outline: none;
-}
-
-.book-box textarea {
-  height: 100px;
-  resize: none;
-}
-
-.book-box button {
-  width: 100%;
-  padding: 15px;
-  background: red;
-  color: white;
-  border: none;
-  font-size: 18px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.book-box button:hover {
-  background: black;
-}
-
-/* 🔥 PREMIUM SLIDER */
 .slider {
   position: relative;
   width: 100%;
   height: 500px;
   overflow: hidden;
-  border-radius: 15px;
+  background: #111827;
 }
 
-/* BLUR BACKGROUND */
 .slider-bg {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
+  inset: 0;
   background-position: center;
-  filter: blur(20px);
-  transform: scale(1.2);
+  background-size: cover;
+  filter: blur(22px);
+  transform: scale(1.12);
+  opacity: 0.45;
+}
+
+.slider::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
   z-index: 1;
 }
 
-/* MAIN IMAGE */
 .slider-img {
   position: relative;
-  width: 80%;
-  height: 100%;
-  object-fit: cover;
-  margin: auto;
-  display: block;
   z-index: 2;
-  border-radius: 15px;
-  transition: 0.5s;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
-.slider-img:hover {
-  transform: scale(1.05);
+
+/* =========================================================
+   NO IMAGE
+========================================================= */
+
+.no-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
+  color: #ffffff;
+  font-size: 20px;
 }
 
-/* BUTTONS */
+
+/* =========================================================
+   SLIDER BUTTONS
+========================================================= */
+
 .prev,
 .next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
+  z-index: 5;
+
+  width: 48px;
+  height: 48px;
+
   border: none;
-  padding: 12px 16px;
-  cursor: pointer;
-  font-size: 22px;
   border-radius: 50%;
-  z-index: 3;
-  transition: 0.3s;
+
+  background: rgba(0, 0, 0, 0.55);
+  color: #ffffff;
+
+  font-size: 25px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.3s ease;
 }
 
 .prev {
-  left: 20px;
+  left: 25px;
 }
 
 .next {
-  right: 20px;
+  right: 25px;
 }
 
 .prev:hover,
 .next:hover {
-  background: red;
+  background: #ffffff;
+  color: #111827;
+  transform: translateY(-50%) scale(1.08);
 }
 
-/* DOTS */
+
+/* =========================================================
+   DOTS
+========================================================= */
+
 .dots {
   position: absolute;
-  bottom: 15px;
-  width: 100%;
-  text-align: center;
-  z-index: 3;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+
+  display: flex;
+  gap: 9px;
 }
 
 .dot {
-  height: 10px;
   width: 10px;
-  margin: 5px;
-  background: gray;
+  height: 10px;
   border-radius: 50%;
-  display: inline-block;
+
+  background: rgba(255, 255, 255, 0.55);
+
   cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.dot:hover {
+  transform: scale(1.2);
 }
 
 .dot.active {
-  background: white;
+  width: 28px;
+  border-radius: 20px;
+  background: #ffffff;
 }
+
+
+/* =========================================================
+   TITLE + PRICE
+========================================================= */
+
+.title-section {
+  width: 92%;
+  max-width: 1250px;
+
+  margin: 0 auto;
+  padding: 30px 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 25px;
+}
+
+.car-title h1 {
+  margin: 0;
+
+  font-size: 34px;
+  font-weight: 700;
+
+  color: #111827;
+  line-height: 1.2;
+}
+
+.car-price {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.car-price h2 {
+  margin: 0;
+
+  font-size: 32px;
+  font-weight: 800;
+
+  color: #0b63ce;
+}
+
+.car-price p {
+  margin: 4px 0 0;
+
+  color: #6b7280;
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   MAIN SECTION
+========================================================= */
+
+.main-section {
+  width: 92%;
+  max-width: 1250px;
+
+  margin: 0 auto 60px;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 350px;
+
+  gap: 30px;
+
+  align-items: start;
+}
+
+
+/* =========================================================
+   LEFT SECTION
+========================================================= */
+
+.left-section {
+  min-width: 0;
+}
+
+
+/* =========================================================
+   TOP INFO BOXES
+========================================================= */
+
+.top-boxes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.info-box {
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+
+  padding: 22px 15px;
+
+  text-align: center;
+
+  box-shadow: 0 5px 18px rgba(15, 23, 42, 0.06);
+
+  transition: 0.3s ease;
+}
+
+.info-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.1);
+}
+
+.info-box h3 {
+  margin: 0 0 7px;
+
+  color: #111827;
+
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.info-box p {
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   TABS
+========================================================= */
+
+.tabs {
+  display: flex;
+
+  gap: 5px;
+
+  background: #e9edf3;
+
+  padding: 5px;
+
+  border-radius: 12px;
+
+  margin-bottom: 18px;
+}
+
+.tab-btn {
+  flex: 1;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  padding: 14px 20px;
+
+  border-radius: 9px;
+
+  color: #5b6472;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.tab-btn:hover {
+  color: #0b63ce;
+}
+
+.tab-btn.active {
+  background: #ffffff;
+
+  color: #0b63ce;
+
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.08);
+}
+
+
+/* =========================================================
+   ACCESSORIES BOX
+========================================================= */
+
+.accessories-box {
+  background: #ffffff;
+
+  border-radius: 16px;
+
+  border: 1px solid #e5e7eb;
+
+  padding: 25px;
+
+  box-shadow: 0 7px 25px rgba(15, 23, 42, 0.06);
+
+  overflow: hidden;
+}
+
+.accessories-box h3 {
+  margin: 0 0 20px;
+
+  color: #111827;
+
+  font-size: 21px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   ACCESSORIES TABLE
+========================================================= */
+
+.accessories-box table {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+.accessories-box tbody tr {
+  border-bottom: 1px solid #edf0f3;
+
+  transition: 0.2s ease;
+}
+
+.accessories-box tbody tr:last-child {
+  border-bottom: none;
+}
+
+.accessories-box tbody tr:hover {
+  background: #f8fafc;
+}
+
+.accessories-box td {
+  padding: 15px 12px;
+
+  font-size: 15px;
+
+  color: #374151;
+}
+
+.accessories-box td:first-child {
+  font-weight: 500;
+}
+
+.accessories-box td:last-child {
+  width: 70px;
+
+  text-align: center;
+
+  font-size: 21px;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   ACCESSORY YES
+========================================================= */
+
+.accessories-box td.yes {
+  color: #16a34a;
+}
+
+
+/* =========================================================
+   ACCESSORY NO
+========================================================= */
+
+.accessories-box td.no {
+  color: #dc2626;
+}
+
+
+/* =========================================================
+   OVERVIEW
+========================================================= */
+
+.accessories-box p {
+  margin: 0;
+
+  color: #5f6b7a;
+
+  font-size: 16px;
+
+  line-height: 1.8;
+
+  white-space: pre-line;
+}
+
+
+/* =========================================================
+   RIGHT BOOKING SECTION
+========================================================= */
+
+.right-section {
+  position: sticky;
+  top: 20px;
+}
+
+
+/* =========================================================
+   BOOK BOX
+========================================================= */
+
+.book-box {
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 18px;
+
+  padding: 27px;
+
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.09);
+}
+
+.book-box h3 {
+  margin: 0 0 22px;
+
+  font-size: 24px;
+
+  color: #111827;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   BOOKING INPUTS
+========================================================= */
+
+.book-box input,
+.book-box textarea {
+  width: 100%;
+
+  border: 1px solid #d9dee6;
+
+  background: #ffffff;
+
+  border-radius: 9px;
+
+  padding: 13px 14px;
+
+  margin-bottom: 14px;
+
+  font-size: 14px;
+
+  color: #1f2937;
+
+  outline: none;
+
+  transition: 0.25s ease;
+}
+
+.book-box input:focus,
+.book-box textarea:focus {
+  border-color: #0b63ce;
+
+  box-shadow: 0 0 0 3px rgba(11, 99, 206, 0.1);
+}
+
+.book-box textarea {
+  min-height: 105px;
+
+  resize: vertical;
+
+  font-family: inherit;
+}
+
+
+/* =========================================================
+   DATE INPUT
+========================================================= */
+
+.book-box input[type="date"] {
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   BOOK BUTTON
+========================================================= */
+
+.book-box button {
+  width: 100%;
+
+  border: none;
+
+  border-radius: 10px;
+
+  padding: 14px 18px;
+
+  background: #0b63ce;
+
+  color: #ffffff;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.book-box button:hover:not(:disabled) {
+  background: #084f9f;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 18px rgba(11, 99, 206, 0.25);
+}
+
+.book-box button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.book-box button:disabled {
+  opacity: 0.65;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.full-page h2 {
+  color: #111827;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .slider {
+    height: 430px;
+  }
+
+  .main-section {
+    grid-template-columns: 1fr 310px;
+
+    gap: 20px;
+  }
+
+  .car-title h1 {
+    font-size: 29px;
+  }
+
+  .car-price h2 {
+    font-size: 28px;
+  }
+
+  .book-box {
+    padding: 22px;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE - 768px
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .slider {
+    height: 360px;
+  }
+
+  .prev,
+  .next {
+    width: 42px;
+    height: 42px;
+
+    font-size: 21px;
+  }
+
+  .prev {
+    left: 15px;
+  }
+
+  .next {
+    right: 15px;
+  }
+
+  .title-section {
+    width: 94%;
+
+    padding: 24px 0;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .car-title h1 {
+    font-size: 27px;
+  }
+
+  .car-price {
+    text-align: left;
+  }
+
+  .car-price h2 {
+    font-size: 27px;
+  }
+
+  .main-section {
+    width: 94%;
+
+    grid-template-columns: 1fr;
+
+    gap: 25px;
+  }
+
+  .right-section {
+    position: static;
+  }
+
+  .top-boxes {
+    gap: 12px;
+  }
+
+  .info-box {
+    padding: 18px 10px;
+  }
+
+  .info-box h3 {
+    font-size: 18px;
+  }
+
+  .accessories-box {
+    padding: 20px;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE - 520px
+========================================================= */
+
+@media (max-width: 520px) {
+
+  .slider {
+    height: 280px;
+  }
+
+  .slider-img {
+    object-fit: contain;
+  }
+
+  .prev,
+  .next {
+    width: 36px;
+    height: 36px;
+
+    font-size: 18px;
+  }
+
+  .prev {
+    left: 10px;
+  }
+
+  .next {
+    right: 10px;
+  }
+
+  .dots {
+    bottom: 12px;
+
+    gap: 6px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .dot.active {
+    width: 22px;
+  }
+
+  .title-section {
+    width: 92%;
+
+    padding: 20px 0;
+  }
+
+  .car-title h1 {
+    font-size: 23px;
+  }
+
+  .car-price h2 {
+    font-size: 24px;
+  }
+
+  .main-section {
+    width: 92%;
+  }
+
+  .top-boxes {
+    grid-template-columns: 1fr;
+  }
+
+  .info-box {
+    padding: 15px;
+  }
+
+  .tabs {
+    padding: 4px;
+  }
+
+  .tab-btn {
+    padding: 12px 8px;
+
+    font-size: 14px;
+  }
+
+  .accessories-box {
+    padding: 17px;
+  }
+
+  .accessories-box h3 {
+    font-size: 19px;
+  }
+
+  .accessories-box td {
+    padding: 13px 8px;
+
+    font-size: 14px;
+  }
+
+  .accessories-box td:last-child {
+    width: 50px;
+
+    font-size: 19px;
+  }
+
+  .book-box {
+    padding: 20px;
+
+    border-radius: 14px;
+  }
+
+  .book-box h3 {
+    font-size: 21px;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE - 360px
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .slider {
+    height: 240px;
+  }
+
+  .car-title h1 {
+    font-size: 21px;
+  }
+
+  .car-price h2 {
+    font-size: 22px;
+  }
+
+  .accessories-box td {
+    font-size: 13px;
+  }
+
+  .accessories-box td:last-child {
+    font-size: 17px;
+  }
+
+  .book-box {
+    padding: 16px;
+  }
+}
+
