@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import "../css/Brandedit.css";
+import "../css/brandedit.css";
 
 export default function Brandedit() {
   const { id } = useParams(); 
