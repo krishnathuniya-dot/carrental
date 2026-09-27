@@ -1,270 +1,726 @@
+
 import React, { useEffect, useState } from "react";
 
 export default function Footer() {
   const [vehicles, setVehicles] = useState([]);
   const [testimonials, setTestimonials] = useState([]);
 
-  
   const [activeImageIndex, setActiveImageIndex] = useState({});
   const [hoveredCard, setHoveredCard] = useState(null);
 
-  
   const [selectedImages, setSelectedImages] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [showModal, setShowModal] = useState(false);
 
- 
+  // =========================================================
+  // FETCH VEHICLES
+  // =========================================================
+
   const fetchVehicles = async () => {
     try {
-      const res = await fetch("https://carrental-kmhk.onrender.com/api/addcardata");
+      const res = await fetch(
+        "https://carrental-kmhk.onrender.com/api/addcardata"
+      );
+
       const data = await res.json();
-      setVehicles(data.data || []);
+
+      console.log("VEHICLES RESPONSE:", data);
+
+      if (!res.ok) {
+        throw new Error(data.message || "Failed to fetch vehicles");
+      }
+
+      setVehicles(Array.isArray(data.data) ? data.data : []);
     } catch (error) {
-      console.log(error);
+      console.error("FETCH VEHICLES ERROR:", error);
+      setVehicles([]);
     }
   };
 
-  // FETCH TESTIMONIAL
+  // =========================================================
+  // FETCH TESTIMONIALS
+  // =========================================================
+
   const fetchTestimonials = async () => {
     try {
-      const res = await fetch("https://carrental-kmhk.onrender.com/api/testiomonaldata");
+      const res = await fetch(
+        "https://carrental-kmhk.onrender.com/api/testiomonaldata"
+      );
+
       const data = await res.json();
-      setTestimonials(data.data || []);
+
+      console.log("TESTIMONIAL RESPONSE:", data);
+
+      if (!res.ok) {
+        throw new Error(data.message || "Failed to fetch testimonials");
+      }
+
+      setTestimonials(Array.isArray(data.data) ? data.data : []);
     } catch (error) {
-      console.log(error);
+      console.error("FETCH TESTIMONIAL ERROR:", error);
+      setTestimonials([]);
     }
   };
+
+  // =========================================================
+  // INITIAL FETCH
+  // =========================================================
 
   useEffect(() => {
     fetchVehicles();
     fetchTestimonials();
   }, []);
 
-  
+  // =========================================================
+  // HOVER AUTO SLIDER
+  // =========================================================
+
   useEffect(() => {
-    if (!hoveredCard) return;
+    if (!hoveredCard) {
+      return;
+    }
+
+    const vehicle = vehicles.find(
+      (v) => v._id === hoveredCard
+    );
+
+    if (!vehicle) {
+      return;
+    }
+
+    const images = [
+      vehicle.image1,
+      vehicle.image2,
+      vehicle.image3,
+      vehicle.image4,
+      vehicle.image5,
+    ].filter(
+      (img) =>
+        typeof img === "string" &&
+        img.trim() !== ""
+    );
+
+    if (images.length <= 1) {
+      return;
+    }
 
     const interval = setInterval(() => {
       setActiveImageIndex((prev) => {
-        const updated = { ...prev };
-
-        const vehicle = vehicles.find(v => v._id === hoveredCard);
-        if (!vehicle) return prev;
-
-        const images = [
-          vehicle.image1,
-          vehicle.image2,
-          vehicle.image3,
-          vehicle.image4,
-          vehicle.image5,
-        ].filter(Boolean);
-
         const current = prev[hoveredCard] || 0;
-        updated[hoveredCard] = (current + 1) % images.length;
 
-        return updated;
+        return {
+          ...prev,
+          [hoveredCard]:
+            (current + 1) % images.length,
+        };
       });
     }, 2000);
 
     return () => clearInterval(interval);
   }, [hoveredCard, vehicles]);
 
-  
+  // =========================================================
+  // MODAL AUTO SLIDER
+  // =========================================================
+
   useEffect(() => {
-    if (!showModal || selectedImages.length === 0) return;
+    if (
+      !showModal ||
+      selectedImages.length <= 1
+    ) {
+      return;
+    }
 
     const interval = setInterval(() => {
-      setCurrentSlide((prev) =>
-        (prev + 1) % selectedImages.length
+      setCurrentSlide(
+        (prev) =>
+          (prev + 1) %
+          selectedImages.length
       );
     }, 2500);
 
-    return () => clearInterval(interval);
+    return () =>
+      clearInterval(interval);
   }, [showModal, selectedImages]);
+
+  // =========================================================
+  // NEXT IMAGE
+  // =========================================================
+
+  const nextImage = (
+    vehicleId,
+    imagesLength,
+    currentIndex
+  ) => {
+    if (imagesLength <= 1) {
+      return;
+    }
+
+    setActiveImageIndex((prev) => ({
+      ...prev,
+      [vehicleId]:
+        (currentIndex + 1) %
+        imagesLength,
+    }));
+  };
+
+  // =========================================================
+  // PREVIOUS IMAGE
+  // =========================================================
+
+  const prevImage = (
+    vehicleId,
+    imagesLength,
+    currentIndex
+  ) => {
+    if (imagesLength <= 1) {
+      return;
+    }
+
+    setActiveImageIndex((prev) => ({
+      ...prev,
+      [vehicleId]:
+        (currentIndex -
+          1 +
+          imagesLength) %
+        imagesLength,
+    }));
+  };
+
+  // =========================================================
+  // OPEN MODAL
+  // =========================================================
+
+  const openImageModal = (
+    images,
+    index
+  ) => {
+    if (!images.length) {
+      return;
+    }
+
+    setSelectedImages(images);
+    setCurrentSlide(index);
+    setShowModal(true);
+  };
+
+  // =========================================================
+  // CLOSE MODAL
+  // =========================================================
+
+  const closeModal = () => {
+    setShowModal(false);
+    setSelectedImages([]);
+    setCurrentSlide(0);
+  };
+
+  // =========================================================
+  // MODAL PREVIOUS
+  // =========================================================
+
+  const modalPrev = () => {
+    if (selectedImages.length <= 1) {
+      return;
+    }
+
+    setCurrentSlide(
+      (prev) =>
+        (prev -
+          1 +
+          selectedImages.length) %
+        selectedImages.length
+    );
+  };
+
+  // =========================================================
+  // MODAL NEXT
+  // =========================================================
+
+  const modalNext = () => {
+    if (selectedImages.length <= 1) {
+      return;
+    }
+
+    setCurrentSlide(
+      (prev) =>
+        (prev + 1) %
+        selectedImages.length
+    );
+  };
 
   return (
     <div className="heading">
-      <h1>Find the best car For You</h1>
 
-      {/* VEHICLES */}
+      {/* =====================================================
+          PAGE TITLE
+      ===================================================== */}
+
+      <h1>
+        Find the best car For You
+      </h1>
+
+      {/* =====================================================
+          VEHICLES
+      ===================================================== */}
+
       <div className="imagegee">
-        {vehicles.map((v) => {
-          const images = [
-            v.image1,
-            v.image2,
-            v.image3,
-            v.image4,
-            v.image5,
-          ].filter(Boolean);
 
-          const currentIndex = activeImageIndex[v._id] || 0;
+        {vehicles.length > 0 ? (
 
-          const nextImage = () => {
-            setActiveImageIndex((prev) => ({
-              ...prev,
-              [v._id]: (currentIndex + 1) % images.length,
-            }));
-          };
+          vehicles.map((v) => {
 
-          const prevImage = () => {
-            setActiveImageIndex((prev) => ({
-              ...prev,
-              [v._id]:
-                (currentIndex - 1 + images.length) % images.length,
-            }));
-          };
+            // =================================================
+            // VEHICLE IMAGES
+            // =================================================
 
-          return (
-            <div
-              className="imagegeecard"
-              key={v._id}
-              onMouseEnter={() => setHoveredCard(v._id)}
-              onMouseLeave={() => setHoveredCard(null)}
-            >
-              <div className="imagegeeimgbox">
+            const images = [
+              v.image1,
+              v.image2,
+              v.image3,
+              v.image4,
+              v.image5,
+            ].filter(
+              (img) =>
+                typeof img === "string" &&
+                img.trim() !== ""
+            );
 
-                <img
-                  src={`https://carrental-kmhk.onrender.com/uploads/${images[currentIndex]}`}
-                  alt="car"
-                  onClick={() => {
-                    setSelectedImages(images);
-                    setCurrentSlide(currentIndex);
-                    setShowModal(true);
-                  }}
-                />
+            // =================================================
+            // CURRENT IMAGE
+            // =================================================
 
-                <button className="slider-btn left" onClick={prevImage}>◀</button>
-                <button className="slider-btn right" onClick={nextImage}>▶</button>
+            const currentIndex =
+              activeImageIndex[v._id] || 0;
 
-                <div className="slider-dots">
-                  {images.map((_, i) => (
-                    <span
-                      key={i}
-                      className={i === currentIndex ? "dot active" : "dot"}
-                      onClick={() =>
-                        setActiveImageIndex((prev) => ({
-                          ...prev,
-                          [v._id]: i,
-                        }))
-                      }
-                    ></span>
-                  ))}
+            return (
+
+              <div
+                className="imagegeecard"
+                key={v._id}
+                onMouseEnter={() =>
+                  setHoveredCard(v._id)
+                }
+                onMouseLeave={() =>
+                  setHoveredCard(null)
+                }
+              >
+
+                {/* ===========================================
+                    IMAGE BOX
+                =========================================== */}
+
+                <div className="imagegeeimgbox">
+
+                  {images.length > 0 ? (
+
+                    <>
+
+                      {/* =====================================
+                          CLOUDINARY IMAGE
+                          IMPORTANT:
+                          NO /uploads/ HERE
+                      ===================================== */}
+
+                      <img
+                        src={
+                          images[currentIndex]
+                        }
+                        alt={`${v.brand || ""} ${
+                          v.vehicleTitle || "car"
+                        }`}
+                        onClick={() =>
+                          openImageModal(
+                            images,
+                            currentIndex
+                          )
+                        }
+                        onError={(e) => {
+                          console.error(
+                            "CLOUDINARY IMAGE FAILED:",
+                            images[currentIndex]
+                          );
+
+                          e.currentTarget.style.display =
+                            "none";
+                        }}
+                      />
+
+                      {/* =====================================
+                          PREVIOUS BUTTON
+                      ===================================== */}
+
+                      {images.length > 1 && (
+
+                        <button
+                          type="button"
+                          className="slider-btn left"
+                          onClick={(e) => {
+                            e.stopPropagation();
+
+                            prevImage(
+                              v._id,
+                              images.length,
+                              currentIndex
+                            );
+                          }}
+                        >
+                          ◀
+                        </button>
+
+                      )}
+
+                      {/* =====================================
+                          NEXT BUTTON
+                      ===================================== */}
+
+                      {images.length > 1 && (
+
+                        <button
+                          type="button"
+                          className="slider-btn right"
+                          onClick={(e) => {
+                            e.stopPropagation();
+
+                            nextImage(
+                              v._id,
+                              images.length,
+                              currentIndex
+                            );
+                          }}
+                        >
+                          ▶
+                        </button>
+
+                      )}
+
+                      {/* =====================================
+                          DOTS
+                      ===================================== */}
+
+                      {images.length > 1 && (
+
+                        <div className="slider-dots">
+
+                          {images.map(
+                            (_, i) => (
+
+                              <span
+                                key={i}
+                                className={
+                                  i ===
+                                  currentIndex
+                                    ? "dot active"
+                                    : "dot"
+                                }
+                                onClick={(e) => {
+                                  e.stopPropagation();
+
+                                  setActiveImageIndex(
+                                    (prev) => ({
+                                      ...prev,
+                                      [v._id]: i,
+                                    })
+                                  );
+                                }}
+                              ></span>
+
+                            )
+                          )}
+
+                        </div>
+
+                      )}
+
+                      {/* =====================================
+                          IMAGE OVERLAY
+                      ===================================== */}
+
+                      <div className="imagegeeoverlay">
+
+                        <span>
+                          🚗{" "}
+                          {v.fuelType ||
+                            "N/A"}
+                        </span>
+
+                        <span>
+                          📅{" "}
+                          {v.modelYear ||
+                            "N/A"}
+                        </span>
+
+                        <span>
+                          👤{" "}
+                          {v.seatingCapacity ||
+                            "N/A"}
+                        </span>
+
+                      </div>
+
+                    </>
+
+                  ) : (
+
+                    <div className="no-image">
+
+                      <p>
+                        No vehicle image
+                        available
+                      </p>
+
+                    </div>
+
+                  )}
+
                 </div>
 
-                <div className="imagegeeoverlay">
-                  <span>🚗 {v.fuelType}</span>
-                  <span>📅 {v.modelYear}</span>
-                  <span>👤 {v.seatingCapacity}</span>
+                {/* =========================================
+                    VEHICLE CONTENT
+                ========================================= */}
+
+                <div className="imagegeecontent">
+
+                  <div className="imagegeetop">
+
+                    <h4>
+                      {v.brand},{" "}
+                      {v.vehicleTitle}
+                    </h4>
+
+                    <p>
+                      ₹{v.pricePerDay}/Day
+                    </p>
+
+                  </div>
+
                 </div>
+
               </div>
 
-              <div className="imagegeecontent">
-                <div className="imagegeetop">
-                  <h4>{v.brand}, {v.vehicleTitle}</h4>
-                  <p>₹{v.pricePerDay}/Day</p>
-                </div>
-              </div>
-            </div>
-          );
-        })}
+            );
+          })
+
+        ) : (
+
+          <div className="no-vehicles">
+
+            <p>
+              No vehicles available.
+            </p>
+
+          </div>
+
+        )}
+
       </div>
 
-      {/* 🔥 TESTIMONIAL BACK */}
+      {/* =====================================================
+          TESTIMONIAL SECTION
+      ===================================================== */}
+
       <section className="testimonial-section">
+
         <div className="overlay"></div>
 
         <div className="testimonial-content">
+
           <h2 className="testimonial-title">
-            Our Satisfied <span>Customers</span>
+            Our Satisfied{" "}
+            <span>Customers</span>
           </h2>
 
           <div className="testimonial-cards">
-            {testimonials.map((item) => (
-              <div className="testimonial-card" key={item._id}>
-                <div className="icon-circle">
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/512/5968/5968764.png"
-                    alt="customer"
-                  />
+
+            {testimonials.length > 0 ? (
+
+              testimonials.map((item) => (
+
+                <div
+                  className="testimonial-card"
+                  key={item._id}
+                >
+
+                  <div className="icon-circle">
+
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/512/5968/5968764.png"
+                      alt="customer"
+                    />
+
+                  </div>
+
+                  <div className="card-content">
+
+                    <h3>
+                      {item.name}
+                    </h3>
+
+                    <p>
+                      {item.message}
+                    </p>
+
+                  </div>
+
                 </div>
 
-                <div className="card-content">
-                  <h3>{item.name}</h3>
-                  <p>{item.message}</p>
-                </div>
-              </div>
-            ))}
+              ))
+
+            ) : (
+
+              <p>
+                No testimonials
+                available.
+              </p>
+
+            )}
+
           </div>
-          {/* 🔥 IMAGE MODAL */}
-{showModal && (
-  <div
-    className="modal-overlay"
-    onClick={() => setShowModal(false)}
-  >
-    <div
-      className="modal-content"
-      onClick={(e) => e.stopPropagation()}
-    >
-      {/* CLOSE BUTTON */}
-      <span
-        className="close-btn"
-        onClick={() => setShowModal(false)}
-      >
-        ✖
-      </span>
 
-      {/* IMAGE */}
-      <img
-        src={`https://carrental-kmhk.onrender.com/uploads/${selectedImages[currentSlide]}`}
-        alt="car"
-        className="modal-image"
-      />
+          {/* =================================================
+              IMAGE MODAL
+          ================================================= */}
 
-      {/* LEFT RIGHT BUTTON */}
-      <button
-        className="modal-btn left"
-        onClick={() =>
-          setCurrentSlide(
-            (currentSlide - 1 + selectedImages.length) %
-              selectedImages.length
-          )
-        }
-      >
-        ◀
-      </button>
+          {showModal &&
+            selectedImages.length > 0 && (
 
-      <button
-        className="modal-btn right"
-        onClick={() =>
-          setCurrentSlide(
-            (currentSlide + 1) %
-              selectedImages.length
-          )
-        }
-      >
-        ▶
-      </button>
+              <div
+                className="modal-overlay"
+                onClick={closeModal}
+              >
 
-      {/* DOTS */}
-      <div className="modal-dots">
-        {selectedImages.map((_, i) => (
-          <span
-            key={i}
-            className={i === currentSlide ? "dot active" : "dot"}
-            onClick={() => setCurrentSlide(i)}
-          ></span>
-        ))}
-      </div>
-    </div>
-  </div>
-)}
+                <div
+                  className="modal-content"
+                  onClick={(e) =>
+                    e.stopPropagation()
+                  }
+                >
+
+                  {/* =========================================
+                      CLOSE BUTTON
+                  ========================================= */}
+
+                  <button
+                    type="button"
+                    className="close-btn"
+                    onClick={closeModal}
+                    aria-label="Close"
+                  >
+                    ✖
+                  </button>
+
+                  {/* =========================================
+                      MODAL IMAGE
+                      DIRECT CLOUDINARY URL
+                  ========================================= */}
+
+                  <img
+                    src={
+                      selectedImages[
+                        currentSlide
+                      ]
+                    }
+                    alt="car"
+                    className="modal-image"
+                    onError={(e) => {
+                      console.error(
+                        "CLOUDINARY MODAL IMAGE FAILED:",
+                        selectedImages[
+                          currentSlide
+                        ]
+                      );
+                    }}
+                  />
+
+                  {/* =========================================
+                      MODAL PREVIOUS
+                  ========================================= */}
+
+                  {selectedImages.length >
+                    1 && (
+
+                    <button
+                      type="button"
+                      className="modal-btn left"
+                      onClick={modalPrev}
+                    >
+                      ◀
+                    </button>
+
+                  )}
+
+                  {/* =========================================
+                      MODAL NEXT
+                  ========================================= */}
+
+                  {selectedImages.length >
+                    1 && (
+
+                    <button
+                      type="button"
+                      className="modal-btn right"
+                      onClick={modalNext}
+                    >
+                      ▶
+                    </button>
+
+                  )}
+
+                  {/* =========================================
+                      MODAL DOTS
+                  ========================================= */}
+
+                  {selectedImages.length >
+                    1 && (
+
+                    <div className="modal-dots">
+
+                      {selectedImages.map(
+                        (_, i) => (
+
+                          <span
+                            key={i}
+                            className={
+                              i ===
+                              currentSlide
+                                ? "dot active"
+                                : "dot"
+                            }
+                            onClick={() =>
+                              setCurrentSlide(
+                                i
+                              )
+                            }
+                          ></span>
+
+                        )
+                      )}
+
+                    </div>
+
+                  )}
+
+                </div>
+
+              </div>
+
+            )}
+
+          {/* =================================================
+              BOTTOM DOTS
+          ================================================= */}
 
           <div className="dots">
+
             <span className="dot active"></span>
+
             <span className="dot"></span>
+
           </div>
+
         </div>
+
       </section>
+
     </div>
   );
 }
