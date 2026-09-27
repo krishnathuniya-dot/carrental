@@ -1,92 +1,215 @@
-import './App.css';
+
+import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Home from './pages/Home';
-import Aboutus from './pages/Aboutus';
-import Homenav from './layout/Homenav';
 
-import Carlistening from './pages/Carlistening';
-import FaQs from './pages/FaQs';
-import Contactus from './pages/Contactus';
+// =========================================================
+// USER / PUBLIC PAGES
+// =========================================================
+import Home from "./pages/Home";
+import Aboutus from "./pages/Aboutus";
+import Carlistening from "./pages/Carlistening";
+import FaQs from "./pages/FaQs";
+import Contactus from "./pages/Contactus";
+import Profile from "./pages/Profile";
+import Updatepassword from "./pages/Updatepassword";
+import Booking from "./pages/Booking";
+import Testimonial from "./pages/Testimonial";
+import View from "./pages/View";
 
-import Profile from './pages/Profile';
-import Updatepassword from './pages/Updatepassword';
-import Sidebar from './layout/Sidebar';
+// =========================================================
+// USER LAYOUT
+// =========================================================
+import Homenav from "./layout/Homenav";
+import Sidebar from "./layout/Sidebar";
 
-import Booking from './pages/Booking';
-import Testimonial from './pages/Testimonial';
-import Admin from './pages/Admin';
+// =========================================================
+// ADMIN
+// =========================================================
+import Admin from "./pages/Admin";
+import AdminDash from "./pages/AdminDash";
+import Adminnav from "./layout/Adminnav";
+import ProtectedRoute from "./component/ProtectedRoute";
 
-import Adminnav from './layout/Adminnav';
-import ProtectedRoute from './component/ProtectedRoute';
-
-import AdminDash from './pages/AdminDash';
-import View from './pages/View';
-import Managecontact from './pages/Managecontact';
-import Registerdata from './pages/registerdata';
-import Contactinfo from './pages/Contactinfo';
-import Subscribedata from './pages/Subscribedata';
-import AddVehicle from './pages/AddVehicle';
-import Vehicledata from './pages/vehicledata';
-import CreateBrand from './pages/Createbrand';
-import Managebrand from './pages/Managebrand';
-import Managebooking from './pages/Managebooking';
-import Testimonialdata from './pages/testimonialdata';
-import Edit from './pages/Edit';
-import Brandedit from './pages/Brandedit';
+// =========================================================
+// ADMIN PAGES
+// =========================================================
+import Registerdata from "./pages/registerdata";
+import Managecontact from "./pages/Managecontact";
+import Contactinfo from "./pages/Contactinfo";
+import Subscribedata from "./pages/Subscribedata";
+import AddVehicle from "./pages/AddVehicle";
+import Vehicledata from "./pages/vehicledata";
+import CreateBrand from "./pages/Createbrand";
+import Managebrand from "./pages/Managebrand";
+import Managebooking from "./pages/Managebooking";
+import Testimonialdata from "./pages/testimonialdata";
+import Edit from "./pages/Edit";
+import Brandedit from "./pages/Brandedit";
 
 function App() {
   return (
     <div>
       <Routes>
-        {/* navbar */}
 
-        <Route path='/' element={<Homenav />} >
-          <Route path='/' element={<Home />} />
+        {/* =====================================================
+            PUBLIC / USER ROUTES
+        ====================================================== */}
+
+        <Route path="/" element={<Homenav />}>
+          
+          <Route index element={<Home />} />
+
           <Route path="/aboutus" element={<Aboutus />} />
-          <Route path="/carlistening" element={<Carlistening></Carlistening>} />
-          <Route path="/faQs" element={<FaQs></FaQs>} />
-          <Route path="/contactus" element={<Contactus></Contactus>} />
-          {/* sidebar */}
-          <Route path='/' element={<Sidebar></Sidebar>}>
 
-            <Route path="/profile" element={<Profile></Profile>} />
-            <Route path="/updatepassword" element={<Updatepassword></Updatepassword>} />
-            <Route path="/booking" element={<Booking></Booking>} />
-            <Route path="/testimonial" element={<Testimonial></Testimonial>} />
+          <Route
+            path="/carlistening"
+            element={<Carlistening />}
+          />
+
+          <Route
+            path="/faQs"
+            element={<FaQs />}
+          />
+
+          <Route
+            path="/contactus"
+            element={<Contactus />}
+          />
+
+          {/* =================================================
+              USER SIDEBAR ROUTES
+          ================================================== */}
+
+          <Route element={<Sidebar />}>
+
+            <Route
+              path="/profile"
+              element={<Profile />}
+            />
+
+            <Route
+              path="/updatepassword"
+              element={<Updatepassword />}
+            />
+
+            <Route
+              path="/booking"
+              element={<Booking />}
+            />
+
+            <Route
+              path="/testimonial"
+              element={<Testimonial />}
+            />
 
           </Route>
-          <Route path="/view/:id" element={<View></View>}></Route>
+
+          {/* Vehicle Details */}
+          <Route
+            path="/view/:id"
+            element={<View />}
+          />
 
         </Route>
-        <Route path="/admin" element={<Admin></Admin>}></Route>
-        {/* protected route */}
-        <Route element={
-          <ProtectedRoute role={"admin"} />}>
 
 
-          <Route path="/" element={<Adminnav></Adminnav>}>
-            <Route path="/dashboard" element={<AdminDash />} />
-            <Route path="/users" element={<Registerdata></Registerdata>} />
-            <Route path="/contact" element={<Managecontact></Managecontact>} />
-            <Route path="/info" element={<Contactinfo></Contactinfo>} />
-            <Route path="/subscribe" element={<Subscribedata></Subscribedata>} />
-            <Route path="/addvevechele" element={<AddVehicle></AddVehicle>} />
-            <Route path="/cardata" element={<Vehicledata></Vehicledata>} />
-            <Route path="/createbrands" element={<CreateBrand></CreateBrand>} />
-            <Route path="/managebrand" element={<Managebrand></Managebrand>} />
-            <Route path="/managebooking" element={<Managebooking></Managebooking>} />
-            <Route path="/testimonaldata" element={<Testimonialdata></Testimonialdata>} />
-            <Route path="/edit/:id" element={<Edit></Edit>} />
-            <Route path="/brandedit/:id" element={<Brandedit></Brandedit>} />
+        {/* =====================================================
+            ADMIN LOGIN
+        ====================================================== */}
 
+        <Route
+          path="/admin"
+          element={<Admin />}
+        />
+
+
+        {/* =====================================================
+            PROTECTED ADMIN ROUTES
+        ====================================================== */}
+
+        <Route element={<ProtectedRoute role="admin" />}>
+
+          <Route path="/" element={<Adminnav />}>
+
+            {/* Dashboard */}
+            <Route
+              path="/dashboard"
+              element={<AdminDash />}
+            />
+
+            {/* Users */}
+            <Route
+              path="/users"
+              element={<Registerdata />}
+            />
+
+            {/* Contact */}
+            <Route
+              path="/contact"
+              element={<Managecontact />}
+            />
+
+            {/* Contact Information */}
+            <Route
+              path="/info"
+              element={<Contactinfo />}
+            />
+
+            {/* Subscribers */}
+            <Route
+              path="/subscribe"
+              element={<Subscribedata />}
+            />
+
+            {/* Add Vehicle */}
+            <Route
+              path="/addvevechele"
+              element={<AddVehicle />}
+            />
+
+            {/* Vehicle Data */}
+            <Route
+              path="/cardata"
+              element={<Vehicledata />}
+            />
+
+            {/* Create Brand */}
+            <Route
+              path="/createbrands"
+              element={<CreateBrand />}
+            />
+
+            {/* Manage Brand */}
+            <Route
+              path="/managebrand"
+              element={<Managebrand />}
+            />
+
+            {/* Manage Booking */}
+            <Route
+              path="/managebooking"
+              element={<Managebooking />}
+            />
+
+            {/* Testimonial Data */}
+            <Route
+              path="/testimonaldata"
+              element={<Testimonialdata />}
+            />
+
+            {/* Edit Vehicle */}
+            <Route
+              path="/edit/:id"
+              element={<Edit />}
+            />
+
+            {/* Edit Brand */}
+            <Route
+              path="/brandedit/:id"
+              element={<Brandedit />}
+            />
 
           </Route>
-
-
-
-
-
-
 
         </Route>
 
@@ -96,3 +219,5 @@ function App() {
 }
 
 export default App;
+
+
