@@ -10,7 +10,7 @@ import {
   FaInstagram,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import "../css/Topheader.css";
+import "../css/topheader.css";
 
 export default function TopHeader() {
   const [showLoginPopup, setShowLoginPopup] = useState(false);
