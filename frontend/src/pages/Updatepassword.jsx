@@ -33,7 +33,7 @@ export default function Updatepassword() {
   }
 
   try {
-    const response = await fetch("http://localhost:2340/api/changepassword", {
+    const response = await fetch("https://carrental-kmhk.onrender.com/api/changepassword", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

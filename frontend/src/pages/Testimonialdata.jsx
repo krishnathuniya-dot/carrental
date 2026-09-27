@@ -6,7 +6,7 @@ export default function Testimonialdata() {
  
    const fetchQuotes = async () => {
      try {
-       const res = await fetch("http://localhost:2340/api/testiomonaldata");
+       const res = await fetch("https://carrental-kmhk.onrender.com/api/testiomonaldata");
        const data = await res.json();
        setQuotes(data.data || []);
      } catch (error) {
@@ -25,7 +25,7 @@ export default function Testimonialdata() {
      if (!confirmDelete) return;
  
      try {
-       await fetch(`http://localhost:2340/api/deletetestimonial/${id}`, {
+       await fetch(`https://carrental-kmhk.onrender.com/api/deletetestimonial/${id}`, {
          method: "DELETE",
        });
  

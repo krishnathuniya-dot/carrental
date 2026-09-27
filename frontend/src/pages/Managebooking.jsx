@@ -6,7 +6,7 @@ export default function Managebooking() {
 
   const fetchQuotes = async () => {
     try {
-      const res = await fetch("http://localhost:2340/api/managebooking");
+      const res = await fetch("https://carrental-kmhk.onrender.com/api/managebooking");
       const data = await res.json();
       setQuotes(data.data);
     } catch (error) {
@@ -26,7 +26,7 @@ export default function Managebooking() {
     if (!confirmAction) return;
 
     try {
-      const res = await fetch(`http://localhost:2340/api/bookingstatus/${id}`, {
+      const res = await fetch(`https://carrental-kmhk.onrender.com/api/bookingstatus/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -61,7 +61,7 @@ export default function Managebooking() {
     if (!confirmDelete) return;
 
     try {
-      const res = await fetch(`http://localhost:2340/api/deletebooking/${id}`, {
+      const res = await fetch(`https://carrental-kmhk.onrender.com/api/deletebooking/${id}`, {
         method: "DELETE",
       });
 

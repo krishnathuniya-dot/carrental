@@ -32,7 +32,7 @@ export default function Profile() {
           return;
         }
 
-        const res = await fetch(`http://localhost:2340/api/profile/${userId}`);
+        const res = await fetch(`https://carrental-kmhk.onrender.com/api/profile/${userId}`);
         const data = await res.json();
 
         console.log("PROFILE DATA:", data);
@@ -84,7 +84,7 @@ export default function Profile() {
         return;
       }
 
-      const res = await fetch(`http://localhost:2340/api/profile/${userId}`, {
+      const res = await fetch(`https://carrental-kmhk.onrender.com/api/profile/${userId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

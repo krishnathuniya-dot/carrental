@@ -14,7 +14,7 @@ export default function Contactinfo() {
 
   const fetchContactInfo = async () => {
     try {
-      const res = await fetch("http://localhost:2340/api/contactinfo");
+      const res = await fetch("https://carrental-kmhk.onrender.com/api/contactinfo");
       const data = await res.json();
 
       console.log("Fetched Data:", data);

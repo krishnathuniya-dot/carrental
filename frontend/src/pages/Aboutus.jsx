@@ -20,7 +20,7 @@ export default function Aboutus() {
       e.preventDefault();
   
       try {
-        const res = await fetch("http://localhost:2340/api/subscribedata", {
+        const res = await fetch("https://carrental-kmhk.onrender.com/api/subscribedata", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

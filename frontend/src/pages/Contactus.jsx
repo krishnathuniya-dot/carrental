@@ -22,7 +22,7 @@ export default function Contactus() {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:2340/api/contactdata", {
+      const res = await fetch("https://carrental-kmhk.onrender.com/api/contactdata", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -9,7 +9,7 @@ export default function Carlistening() {
  
   const fetchVehicles = async () => {
     try {
-      const res = await fetch("http://localhost:2340/api/addcardata");
+      const res = await fetch("https://carrental-kmhk.onrender.com/api/addcardata");
       const data = await res.json();
         console.log(data);
       setVehicles(data.data || []);
@@ -21,7 +21,7 @@ export default function Carlistening() {
   
   const fetchBrands = async () => {
     try {
-      const res = await fetch("http://localhost:2340/api/carbrand");
+      const res = await fetch("https://carrental-kmhk.onrender.com/api/carbrand");
       const data = await res.json();
       setBrands(data.data || []);
     } catch (error) {
@@ -78,7 +78,7 @@ export default function Carlistening() {
                 <img
                   src={
                     car.image1
-                      ? `http://localhost:2340/uploads/${car.image1}`
+                      ? `https://carrental-kmhk.onrender.com/uploads/${car.image1}`
                       : "https://via.placeholder.com/100"
                   }
                   alt={car.vehicleTitle}
@@ -102,7 +102,7 @@ export default function Carlistening() {
                 <img
                   src={
                     car.image1
-                      ? `http://localhost:2340/uploads/${car.image1}`
+                      ? `https://carrental-kmhk.onrender.com/uploads/${car.image1}`
                       : "https://via.placeholder.com/400x250"
                   }
                   alt={car.vehicleTitle}

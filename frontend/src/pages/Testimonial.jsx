@@ -19,7 +19,7 @@ export default function TestimonialForm() {
     const name = localStorage.getItem("name"); 
 
     try {
-      const res = await fetch("http://localhost:2340/api/testimonal", {
+      const res = await fetch("https://carrental-kmhk.onrender.com/api/testimonal", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

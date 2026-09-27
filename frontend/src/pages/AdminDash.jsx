@@ -14,7 +14,7 @@ export default function AdminDash() {
   // Fetch Registered Users Count
   const fetchUserCount = async () => {
     try {
-      const res = await fetch("http://localhost:2340/api/registerdata/count");
+      const res = await fetch("https://carrental-kmhk.onrender.com/api/registerdata/count");
 
       if (!res.ok) {
         throw new Error(`HTTP error! Status: ${res.status}`);
@@ -33,7 +33,7 @@ export default function AdminDash() {
   // Fetch Subscribers Count
   const fetchSubscriberCount = async () => {
     try {
-      const res = await fetch("http://localhost:2340/api/subscribe/count");
+      const res = await fetch("https://carrental-kmhk.onrender.com/api/subscribe/count");
 
       if (!res.ok) {
         throw new Error(`HTTP error! Status: ${res.status}`);
@@ -52,7 +52,7 @@ export default function AdminDash() {
   // Fetch Brand Count
   const fetchBrandCount = async () => {
     try {
-      const res = await fetch("http://localhost:2340/api/brand/count");
+      const res = await fetch("https://carrental-kmhk.onrender.com/api/brand/count");
 
       if (!res.ok) {
         throw new Error(`HTTP error! Status: ${res.status}`);
@@ -70,7 +70,7 @@ export default function AdminDash() {
 
   const fetchmanageCount = async () => {
     try {
-      const res = await fetch("http://localhost:2340/api/booking/count");
+      const res = await fetch("https://carrental-kmhk.onrender.com/api/booking/count");
 
       if (!res.ok) {
         throw new Error(`HTTP error! Status: ${res.status}`);
@@ -88,7 +88,7 @@ export default function AdminDash() {
 
   const fetchcarCount = async () => {
     try {
-      const res = await fetch("http://localhost:2340/api/addcardata/count");
+      const res = await fetch("https://carrental-kmhk.onrender.com/api/addcardata/count");
 
       if (!res.ok) {
         throw new Error(`HTTP error! Status: ${res.status}`);
@@ -106,7 +106,7 @@ export default function AdminDash() {
 
   const fetchcontactCount = async () => {
     try {
-      const res = await fetch("http://localhost:2340/api/contact/count");
+      const res = await fetch("https://carrental-kmhk.onrender.com/api/contact/count");
 
       if (!res.ok) {
         throw new Error(`HTTP error! Status: ${res.status}`);

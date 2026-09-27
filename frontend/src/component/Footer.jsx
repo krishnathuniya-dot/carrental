@@ -16,7 +16,7 @@ export default function Footer() {
  
   const fetchVehicles = async () => {
     try {
-      const res = await fetch("http://localhost:2340/api/addcardata");
+      const res = await fetch("https://carrental-kmhk.onrender.com/api/addcardata");
       const data = await res.json();
       setVehicles(data.data || []);
     } catch (error) {
@@ -27,7 +27,7 @@ export default function Footer() {
   // FETCH TESTIMONIAL
   const fetchTestimonials = async () => {
     try {
-      const res = await fetch("http://localhost:2340/api/testiomonaldata");
+      const res = await fetch("https://carrental-kmhk.onrender.com/api/testiomonaldata");
       const data = await res.json();
       setTestimonials(data.data || []);
     } catch (error) {
@@ -124,7 +124,7 @@ export default function Footer() {
               <div className="imagegeeimgbox">
 
                 <img
-                  src={`http://localhost:2340/uploads/${images[currentIndex]}`}
+                  src={`https://carrental-kmhk.onrender.com/uploads/${images[currentIndex]}`}
                   alt="car"
                   onClick={() => {
                     setSelectedImages(images);
@@ -215,7 +215,7 @@ export default function Footer() {
 
       {/* IMAGE */}
       <img
-        src={`http://localhost:2340/uploads/${selectedImages[currentSlide]}`}
+        src={`https://carrental-kmhk.onrender.com/uploads/${selectedImages[currentSlide]}`}
         alt="car"
         className="modal-image"
       />

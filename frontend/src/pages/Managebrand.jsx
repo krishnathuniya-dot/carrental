@@ -6,7 +6,7 @@ export default function Managebrand() {
 
   const fetchQuotes = async () => {
     try {
-      const res = await fetch("http://localhost:2340/api/carbrand");
+      const res = await fetch("https://carrental-kmhk.onrender.com/api/carbrand");
       const data = await res.json();
       setQuotes(data.data || []);
     } catch (error) {
@@ -25,7 +25,7 @@ export default function Managebrand() {
     if (!confirmDelete) return;
 
     try {
-      await fetch(`http://localhost:2340/api/deletebrand/${id}`, {
+      await fetch(`https://carrental-kmhk.onrender.com/api/deletebrand/${id}`, {
         method: "DELETE",
       });
 

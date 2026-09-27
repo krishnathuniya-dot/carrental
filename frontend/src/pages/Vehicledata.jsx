@@ -8,7 +8,7 @@ export default function Vehicledata() {
 
   const fetchVehicles = async () => {
     try {
-      const res = await fetch("http://localhost:2340/api/addcardata");
+      const res = await fetch("https://carrental-kmhk.onrender.com/api/addcardata");
       const data = await res.json();
       setVehicles(data.data || []);
     } catch (error) {
@@ -21,7 +21,7 @@ export default function Vehicledata() {
     if (!confirmDelete) return;
 
     try {
-      const res = await fetch(`http://localhost:2340/api/deletecar/${id}`, {
+      const res = await fetch(`https://carrental-kmhk.onrender.com/api/deletecar/${id}`, {
         method: "DELETE",
       });
 

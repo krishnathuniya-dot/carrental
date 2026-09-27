@@ -6,7 +6,7 @@ export default function Registerdata() {
 
   const fetchQuotes = async () => {
     try {
-      const res = await fetch("http://localhost:2340/api/registerdata");
+      const res = await fetch("https://carrental-kmhk.onrender.com/api/registerdata");
       const data = await res.json();
       setQuotes(data.data);
     } catch (error) {
@@ -25,7 +25,7 @@ export default function Registerdata() {
     if (!confirmDelete) return;
 
     try {
-      await fetch(`http://localhost:2340/api/managequote/${id}`, {
+      await fetch(`https://carrental-kmhk.onrender.com/api/managequote/${id}`, {
         method: "DELETE",
       });
 

@@ -81,7 +81,7 @@ export default function View() {
         setLoading(true);
 
         const res = await fetch(
-          `http://localhost:2340/api/vehiclefetch/${id}`
+          `https://carrental-kmhk.onrender.com/api/vehiclefetch/${id}`
         );
 
         const data = await res.json();
@@ -482,7 +482,7 @@ export default function View() {
       // =====================================================
 
       const res = await fetch(
-        "http://localhost:2340/api/booking",
+        "https://carrental-kmhk.onrender.com/api/booking",
         {
           method: "POST",
 
@@ -593,14 +593,14 @@ export default function View() {
             <div
               className="slider-bg"
               style={{
-                backgroundImage: `url(http://localhost:2340/uploads/${vehicleImages[currentIndex]})`,
+                backgroundImage: `url(https://carrental-kmhk.onrender.com/uploads/${vehicleImages[currentIndex]})`,
               }}
             ></div>
 
             {/* MAIN IMAGE */}
 
             <img
-              src={`http://localhost:2340/uploads/${vehicleImages[currentIndex]}`}
+              src={`https://carrental-kmhk.onrender.com/uploads/${vehicleImages[currentIndex]}`}
               alt={`${vehicleData.brand} ${vehicleData.vehicleTitle}`}
               className="slider-img"
             />

@@ -3,22 +3,22 @@ import { Routes, Route } from "react-router-dom";
 import Home from './pages/Home';
 import Aboutus from './pages/Aboutus';
 import Homenav from './layout/Homenav';
-import Footer from './component/Footer';
+
 import Carlistening from './pages/Carlistening';
 import FaQs from './pages/FaQs';
 import Contactus from './pages/Contactus';
-import REgister from './pages/REgister';
+
 import Profile from './pages/Profile';
 import Updatepassword from './pages/Updatepassword';
-import Sidebar from './layout/sidebar';
-import Siddebar from './pages/Siddebar';
+import Sidebar from './layout/Sidebar';
+
 import Booking from './pages/Booking';
 import Testimonial from './pages/Testimonial';
 import Admin from './pages/Admin';
-import Admindashboard from './pages/Admindashboard';
+
 import Adminnav from './layout/Adminnav';
 import ProtectedRoute from './component/ProtectedRoute';
-import Brands from './pages/Brands';
+
 import AdminDash from './pages/AdminDash';
 import View from './pages/View';
 import Managecontact from './pages/Managecontact';

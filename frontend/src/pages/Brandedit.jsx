@@ -21,7 +21,7 @@ export default function Brandedit() {
   // Old brand data fetch by id
   const fetchBrand = async () => {
     try {
-      const res = await fetch(`http://localhost:2340/api/brandfetch/${id}`);
+      const res = await fetch(`https://carrental-kmhk.onrender.com/api/brandfetch/${id}`);
       const data = await res.json();
 
       if (res.ok) {

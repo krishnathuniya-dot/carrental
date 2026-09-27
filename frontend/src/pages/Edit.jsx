@@ -35,7 +35,7 @@ export default function Edit() {
   useEffect(() => {
     async function fetchVehicle() {
       try {
-        const res = await fetch(`http://localhost:2340/api/caradd/${id}`);
+        const res = await fetch(`https://carrental-kmhk.onrender.com/api/caradd/${id}`);
         const data = await res.json();
 
         if (!res.ok) {
@@ -56,11 +56,11 @@ export default function Edit() {
         });
 
         setPreviewImages({
-          image1: vehicle.image1 ? `http://localhost:2340/uploads/${vehicle.image1}` : "",
-          image2: vehicle.image2 ? `http://localhost:2340/uploads/${vehicle.image2}` : "",
-          image3: vehicle.image3 ? `http://localhost:2340/uploads/${vehicle.image3}` : "",
-          image4: vehicle.image4 ? `http://localhost:2340/uploads/${vehicle.image4}` : "",
-          image5: vehicle.image5 ? `http://localhost:2340/uploads/${vehicle.image5}` : "",
+          image1: vehicle.image1 ? `https://carrental-kmhk.onrender.com/uploads/${vehicle.image1}` : "",
+          image2: vehicle.image2 ? `https://carrental-kmhk.onrender.com/uploads/${vehicle.image2}` : "",
+          image3: vehicle.image3 ? `https://carrental-kmhk.onrender.com/uploads/${vehicle.image3}` : "",
+          image4: vehicle.image4 ? `https://carrental-kmhk.onrender.com/uploads/${vehicle.image4}` : "",
+          image5: vehicle.image5 ? `https://carrental-kmhk.onrender.com/uploads/${vehicle.image5}` : "",
         });
       } catch (error) {
         console.log("Fetch error:", error);
@@ -131,7 +131,7 @@ export default function Edit() {
         form.append(key, images[key]);
       });
 
-      const res = await fetch(`http://localhost:2340/api/carupdate/${id}`, {
+      const res = await fetch(`https://carrental-kmhk.onrender.com/api/carupdate/${id}`, {
         method: "PUT",
         body: form,
       });

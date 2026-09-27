@@ -5,7 +5,7 @@ export default function Subscribedata() {
 
   const fetchQuotes = async () => {
     try {
-      const res = await fetch("http://localhost:2340/api/subscribe");
+      const res = await fetch("https://carrental-kmhk.onrender.com/api/subscribe");
       const data = await res.json();
       setQuotes(data.data || []);
     } catch (error) {
@@ -24,7 +24,7 @@ export default function Subscribedata() {
     if (!confirmDelete) return;
 
     try {
-      await fetch(`http://localhost:2340/api/subscribe/${id}`, {
+      await fetch(`https://carrental-kmhk.onrender.com/api/subscribe/${id}`, {
         method: "DELETE",
       });
 

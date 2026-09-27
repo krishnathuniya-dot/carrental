@@ -44,7 +44,7 @@ export default function AddVehicle() {
   
   const fetchBrands = async () => {
     try {
-      const res = await fetch("http://localhost:2340/api/carbrand"); 
+      const res = await fetch("https://carrental-kmhk.onrender.com/api/carbrand"); 
       const data = await res.json();
 
       console.log("Brand API Response:", data);

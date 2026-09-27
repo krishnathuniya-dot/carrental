@@ -23,7 +23,7 @@ export default function Bookings() {
       }
 
       const res = await fetch(
-        `http://localhost:2340/api/mybookings/${userId}`
+        `https://carrental-kmhk.onrender.com/api/mybookings/${userId}`
       );
 
       const data = await res.json();
@@ -140,7 +140,7 @@ export default function Bookings() {
               {item.vehicleId?.image1 ? (
 
                 <img
-                  src={`http://localhost:2340/uploads/${item.vehicleId.image1}`}
+                  src={`https://carrental-kmhk.onrender.com/uploads/${item.vehicleId.image1}`}
                   alt={
                     item.vehicleId.vehicleTitle ||
                     item.brand ||

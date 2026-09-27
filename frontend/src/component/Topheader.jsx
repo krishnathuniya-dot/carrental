@@ -47,7 +47,7 @@ export default function TopHeader() {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:2340/api/login", {
+      const res = await fetch("https://carrental-kmhk.onrender.com/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -89,7 +89,7 @@ export default function TopHeader() {
     }
 
     try {
-      const res = await fetch("http://localhost:2340/api/signup", {
+      const res = await fetch("https://carrental-kmhk.onrender.com/api/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
