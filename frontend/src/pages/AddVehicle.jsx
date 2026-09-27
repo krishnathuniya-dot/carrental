@@ -145,7 +145,7 @@ export default function AddVehicle() {
       if (images.image4) submitData.append("image4", images.image4);
       if (images.image5) submitData.append("image5", images.image5);
 
-      const res = await fetch("http://localhost:2340/api/addvehicle", {
+      const res = await fetch("https://carrental-kmhk.onrender.com/api/addvehicle", {
         method: "POST",
         body: submitData,
       });
