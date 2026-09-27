@@ -1,8 +1,10 @@
+require("dotenv").config();
+
 const express = require("express");
 const app = express();
+
 const mongoose = require("mongoose");
 const cors = require("cors");
-const path = require("path");   // ✅ Add this
 
 const authRoutes = require("./routes/authRoutes");
 const profile = require("./routes/profileRoute");
@@ -14,9 +16,8 @@ const carbrand = require("./routes/carbrand");
 const caradd = require("./routes/caradd");
 const testimonaials = require("./routes/testimonaials");
 
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-
 app.use(cors());
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -30,9 +31,10 @@ app.use("/api", carbrand);
 app.use("/api", managebooking);
 app.use("/api", testimonaials);
 
-mongoose.connect("mongodb+srv://krishnathuniya_db_user:krishna@cluster0.6yreqku.mongodb.net/cardata?retryWrites=true&w=majority&appName=Cluster0")
+mongoose
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
-  .catch(err => console.log(err));
+  .catch((err) => console.log(err));
 
 app.listen(2340, () => {
   console.log("Server running on port 2340");
