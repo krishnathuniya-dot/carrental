@@ -38,7 +38,7 @@ import Managecontact from "./pages/Managecontact";
 import Contactinfo from "./pages/Contactinfo";
 import Subscribedata from "./pages/Subscribedata";
 import AddVehicle from "./pages/AddVehicle";
-import Vehicledata from "./pages/vehicledata";
+import Vehicledata from "./pages/Vehicledata";
 import CreateBrand from "./pages/Createbrand";
 import Managebrand from "./pages/Managebrand";
 import Managebooking from "./pages/Managebooking";
